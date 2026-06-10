@@ -14,6 +14,9 @@ import type {
 } from "../types.js";
 import { BASIC_EMOTION_NAMES, DIMENSION_NAMES, OCEAN_TRAITS } from "../types.js";
 
+// Minimum deviation from baseline to consider a dimension "notable"
+const THRESHOLD = 0.15;
+
 // ---------------------------------------------------------------------------
 // Formatting Helpers
 // ---------------------------------------------------------------------------
@@ -74,7 +77,6 @@ export function formatDimensionSummary(
   dimensions: DimensionalState,
   baseline: DimensionalState,
 ): string {
-  const THRESHOLD = 0.15;
   const deviations: string[] = [];
 
   for (const name of DIMENSION_NAMES) {
